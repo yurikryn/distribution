@@ -6,14 +6,13 @@
   <body>
     <script>
       "use strict";
-      const x = 2 ** (-1023);
-      if (x > 0) {
+      const x = 2 ** -1023;
+      if (x !== 0) {
         let p = Math.floor(Math.log2(x));
-        let c = x * 2 ** (-p);
-        while (!Number.isInteger(c)) {
-          c *= 2;
-          p -= 1;
-        }
+        let c = x / 2 ** p;
+        const deltaP = Math.min(52, p + 1024 + 52);
+        c *= 2 ** deltaP;
+        p -= deltaP;
         console.log(c + " * 2^" + p);
       } else {
         console.log("0");
