@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+</head>
+<html>
+  <body>
+    <script>
+      "use strict";
+      const x = 2 ** (-1023);
+      if (x > 0) {
+        let p = Math.floor(Math.log2(x));
+        let c = x * 2 ** (-p);
+        while (!Number.isInteger(c)) {
+          c *= 2;
+          p -= 1;
+        }
+        console.log(c + " * 2^" + p);
+      } else {
+        console.log("0");
+      }
+    </script>
+  </body>
+</html>
